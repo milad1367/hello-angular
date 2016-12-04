@@ -1,3 +1,34 @@
-<h1>
-  {{title}}
-</h1>
+<!-- start add hero -->
+     <b> name :</b> <input #newName  id="name" type="text">
+     <b> event name :</b> <input #newEvent  id="event_name" type="text">
+     <b> email : </b> <input #newEmail id="email" type="email">
+     <button (click)=addHero({name:newName.value,event_name:newEvent.value,email:newEmail.value})>Add new event
+</button>
+<br>
+<br>
+<br>
+<br>
+
+<!-- end  -->
+<h1> show event list : </h1>
+<!-- show hero -->
+<ul>
+   <li *ngFor="let hero of heroes">
+       <a (click)="onSelect(hero)">edit</a>
+       <a (click)="delete(hero)">delete</a>
+       <b> name</b> :{{ hero.name }}
+       <b> event name</b> : {{hero.event_name}}
+       <b> email</b> : {{hero.email}}
+   </li>
+</ul>
+<!-- end -->
+
+<!-- start edit hero -->
+
+<div *ngIf="selectedHero">
+     name: <input value = {{selectedHero.name}} #name>
+     eventname: <input value = {{selectedHero.event_name}} #event_name>
+     email: <input value = {{selectedHero.email}} #email>
+     <a (click)="update({name:name.value,event_name:event_name.value,email:email.value})">Agree</a>
+</div>
+<!-- end  -->
